@@ -1,9 +1,12 @@
 const httpStatus = require('http-status');
+const Moralis = require('moralis/node');
 const tokenService = require('./token.service');
 const userService = require('./user.service');
 const Token = require('../models/token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
+
+Moralis.start({ appId: process.env.MORALIS_APP_ID, serverUrl: process.env.MORALIS_SERVER_URL });
 
 /**
  * Login with username and password
@@ -18,6 +21,34 @@ const loginUserWithEmailAndPassword = async (email, password) => {
   }
   return user;
 };
+
+// /**
+//  * Login with wallet
+//  * @returns {Promise<User>}
+//  */
+// const login = async () => {
+//   const user = await Moralis.authenticate({ type: 'sol' })
+//     .then(function (user) {
+//       console.log('Logged in', user);
+//       console.log(user.get('solAddress'));
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+//   if (!user) {
+//     throw new ApiError(httpStatus.UNAUTHORIZED, 'Login not approved');
+//   }
+//   return user;
+// };
+
+// /**
+//  * Logout from wallet
+//  * @returns {null}
+//  */
+// const logout = async () => {
+//   await Moralis.User.logOut();
+//   console.log('Logged out');
+// };
 
 /**
  * Logout
