@@ -7,6 +7,13 @@ const bountyTypes = {
   RECRUITING: 'recruiting',
 };
 
+const bountyStates = {
+  OPEN: 'open',
+  CLOSED: 'closed',
+  REVIEW: 'review',
+};
+
 module.exports = {
   bountyTypes,
+  bountyStates,
 };

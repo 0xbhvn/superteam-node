@@ -3,6 +3,8 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const bountyRoute = require('./bounty.route');
+const collabRoute = require('./collab.route');
+const collaboratorRoute = require('./collaborator.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -19,6 +21,14 @@ const defaultRoutes = [
   {
     path: '/bounties',
     route: bountyRoute,
+  },
+  {
+    path: '/collabs',
+    route: collabRoute,
+  },
+  {
+    path: '/collaborators',
+    route: collaboratorRoute,
   },
 ];
 

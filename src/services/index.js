@@ -3,3 +3,5 @@ module.exports.emailService = require('./email.service');
 module.exports.tokenService = require('./token.service');
 module.exports.userService = require('./user.service');
 module.exports.bountyService = require('./bounty.service');
+module.exports.collabService = require('./collab.service');
+module.exports.collaboratorService = require('./collaborator.service');

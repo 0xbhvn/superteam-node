@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
-const { bountyTypes } = require('../config/bounties');
+const { bountyTypes, bountyStates } = require('../config/bounties');
 
 const bountySchema = mongoose.Schema(
   {
@@ -11,20 +11,18 @@ const bountySchema = mongoose.Schema(
     },
     category: {
       type: String,
-      enum: [
-        bountyTypes.WRITING,
-        bountyTypes.DESIGN,
-        bountyTypes.DEVELOPMENT,
-        bountyTypes.VIDEO,
-        bountyTypes.RESEARCH,
-        bountyTypes.RECRUITING,
-      ],
+      enum: Object.values(bountyTypes),
       required: true,
     },
     prize: {
       type: Number,
       required: true,
-      trim: true,
+    },
+    state: {
+      type: String,
+      enum: Object.values(bountyStates),
+      default: bountyStates.OPEN,
+      required: true,
     },
     startDate: {
       type: Date,
@@ -34,7 +32,7 @@ const bountySchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    creator: {
+    createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
       required: true,
