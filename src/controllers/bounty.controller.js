@@ -10,7 +10,7 @@ const createBounty = catchAsync(async (req, res) => {
 });
 
 const getBounties = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name', 'category']);
+  const filter = pick(req.query, ['createdBy', 'category', 'state']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await bountyService.queryBounties(filter, options);
   res.send(result);

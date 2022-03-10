@@ -6,15 +6,12 @@ const bountyController = require('../../controllers/bounty.controller');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post(auth('manageBounties'), bountyController.createBounty)
-  .get(auth('getBounties'), bountyController.getBounties);
+router.route('/').post(bountyController.createBounty).get(bountyController.getBounties);
 
 router
   .route('/:bountyId')
-  .get(auth('getBounties'), bountyController.getBounty)
-  .patch(auth('manageBounties'), bountyController.updateBounty)
-  .delete(auth('manageBounties'), bountyController.deleteBounty);
+  .get(bountyController.getBounty)
+  .patch(bountyController.updateBounty)
+  .delete(bountyController.deleteBounty);
 
 module.exports = router;

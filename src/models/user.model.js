@@ -40,6 +40,24 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    walletAddress: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    daoXP: {
+      type: Number,
+      default: 0,
+    },
+    superXP: {
+      type: Number,
+      default: 0,
+    },
     isEmailVerified: {
       type: Boolean,
       default: false,

@@ -18,6 +18,30 @@ const collabSchema = mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    link: {
+      type: String,
+      trim: true,
+    },
+    notes: {
+      type: String,
+    },
+    ratio: {
+      type: String,
+    },
+    source: {
+      file: {
+        type: Buffer,
+        required: true,
+      },
+      filename: {
+        type: String,
+        required: true,
+      },
+      mimetype: {
+        type: String,
+        required: true,
+      },
+    },
   },
   {
     timestamps: true,

@@ -13,7 +13,14 @@ const bountyStates = {
   REVIEW: 'review',
 };
 
+const bountyXps = {
+  BEGINNER: 10,
+  MODERATE: 15,
+  EXPERT: 20,
+};
+
 module.exports = {
   bountyTypes,
   bountyStates,
+  bountyXps,
 };

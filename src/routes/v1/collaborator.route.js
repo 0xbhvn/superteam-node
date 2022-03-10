@@ -6,15 +6,12 @@ const collaboratorController = require('../../controllers/collaborator.controlle
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post(auth('requestCollabs'), collaboratorController.createCollaborator)
-  .get(auth('requestCollabs'), collaboratorController.getCollaborators);
+router.route('/').post(collaboratorController.createCollaborator).get(collaboratorController.getCollaborators);
 
 router
   .route('/:collaboratorId')
-  .get(auth('requestCollabs'), collaboratorController.getCollaborator)
-  .patch(auth('manageCollabs'), collaboratorController.updateCollaborator)
-  .delete(auth('manageCollabs'), collaboratorController.deleteCollaborator);
+  .get(collaboratorController.getCollaborator)
+  .patch(collaboratorController.updateCollaborator)
+  .delete(collaboratorController.deleteCollaborator);
 
 module.exports = router;
