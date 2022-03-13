@@ -1,47 +1,43 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
+const { collabStates } = require('../config/collabs');
+const { userSkills } = require('../config/users');
 
 const collabSchema = mongoose.Schema(
   {
-    bounty: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Bounty',
-      required: true,
-    },
-    members: {
-      type: Number,
-      required: true,
-      default: 1,
-    },
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
       required: true,
     },
-    link: {
+    title: {
       type: String,
       trim: true,
     },
-    notes: {
+    description: {
       type: String,
+      trim: true,
     },
-    ratio: {
+    period: {
+      type: Number,
+    },
+    skills: [
+      {
+        type: String,
+        enum: Object.values(userSkills),
+      },
+    ],
+    status: {
       type: String,
+      enum: Object.values(collabStates),
+      default: collabStates.OPEN,
     },
-    source: {
-      file: {
-        type: Buffer,
-        required: true,
+    members: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
       },
-      filename: {
-        type: String,
-        required: true,
-      },
-      mimetype: {
-        type: String,
-        required: true,
-      },
-    },
+    ],
   },
   {
     timestamps: true,

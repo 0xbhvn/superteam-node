@@ -10,7 +10,7 @@ const createCollab = catchAsync(async (req, res) => {
 });
 
 const getCollabs = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['createdBy', 'bounty']);
+  const filter = pick(req.query, ['createdBy', 'status']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await collabService.queryCollabs(filter, options);
   res.send(result);

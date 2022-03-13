@@ -1,6 +1,6 @@
 const allRoles = {
-  user: ['getBounties', 'requestCollabs', 'manageCollabs'],
-  admin: ['getUsers', 'manageUsers', 'getBounties', 'manageBounties', 'requestCollabs', 'manageCollabs'],
+  CORECONTRIBUTOR: [],
+  MEMBER: [],
 };
 
 const roles = Object.keys(allRoles);
