@@ -35,7 +35,11 @@ const updateUser = {
   }),
   body: Joi.object()
     .keys({
+      walletAddress: Joi.string(),
+      superXP: Joi.number(),
+      daoXP: Joi.number(),
       name: Joi.string(),
+      skills: Joi.array().items(Joi.string()),
     })
     .min(1),
 };
