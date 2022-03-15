@@ -10,7 +10,7 @@ const createCollaborator = catchAsync(async (req, res) => {
 });
 
 const getCollaborators = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name', 'category']);
+  const filter = pick(req.query, ['collab', 'user', 'status']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await collaboratorService.queryCollaborators(filter, options);
   res.send(result);
