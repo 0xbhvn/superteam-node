@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 const { collaboratorStates } = require('../config/collaborators');
-const { userSkills } = require('../config/users');
 
 const collaboratorSchema = mongoose.Schema(
   {
@@ -15,19 +14,10 @@ const collaboratorSchema = mongoose.Schema(
       ref: 'Collab',
       required: true,
     },
-    note: {
-      type: String,
-      trim: true,
-    },
     status: {
       type: String,
       enum: Object.values(collaboratorStates),
       default: collaboratorStates.REQUESTED,
-      required: true,
-    },
-    commitHours: {
-      type: Number,
-      default: 0,
       required: true,
     },
   },

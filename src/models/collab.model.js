@@ -32,12 +32,10 @@ const collabSchema = mongoose.Schema(
       enum: Object.values(collabStates),
       default: collabStates.OPEN,
     },
-    members: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
-      },
-    ],
+    members: {
+      type: [mongoose.SchemaTypes.ObjectId],
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
